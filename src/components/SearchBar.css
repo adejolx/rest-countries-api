@@ -1,0 +1,19 @@
+.search-bar {
+  position: relative;
+  width: min(30rem, 100%);
+}
+.search-bar .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  box-shadow: none;
+}
+
+.search-bar input {
+  padding-inline-start: 3.5rem;
+  width: 100%;
+}

@@ -1,0 +1,42 @@
+.card {
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-color: var(--dark-mode-elements);
+  box-shadow: 0px 0px 15px -2px var(--blue-200);
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 2rem;
+}
+
+.card .image-container {
+  order: -1;
+  height: 200px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card .card-heading,
+.card .card-copy {
+  padding-inline: 1.5rem;
+}
+
+.card .card-heading {
+  padding-block-start: 2rem;
+  padding-block-end: 1rem;
+}
+
+.card .card-copy {
+  padding-block: 0.5rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .card {
+    background-color: var(--white);
+    box-shadow: 0px 0px 5px -2px var(--gray-200);
+  }
+}

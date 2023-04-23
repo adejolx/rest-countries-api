@@ -1,0 +1,15 @@
+.filter-block {
+  position: relative;
+}
+.filter-block .filter-icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+
+.filter-button {
+  text-transform: capitalize;
+  padding-inline-start: 1rem;
+  padding-inline-end: 4rem;
+}
