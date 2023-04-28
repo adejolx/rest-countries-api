@@ -8,13 +8,17 @@ type Props = {
 };
 const Card = ({ heading, image, alt, children }: Props) => {
   return (
-    <article className="card card--clickable">
-      <h2 className="card-heading">{heading}</h2>
-      <div className="image-container">
+    <li className="card card--clickable">
+      <div className="card-copy stack-sm">
+        <h2 className="card-heading">
+          <a>{heading}</a>
+        </h2>
+        {children}
+      </div>
+      <div className="image">
         <img src={image} alt={alt || ""} />
       </div>
-      <div className="card-copy stack-sm">{children}</div>
-    </article>
+    </li>
   );
 };
 export default Card;

@@ -5,33 +5,28 @@
   box-shadow: 0px 0px 15px -2px var(--blue-200);
   display: flex;
   flex-direction: column;
-  padding-block-end: 2rem;
+  justify-content: space-between;
+  position: relative;
 }
 
-.card .image-container {
-  order: -1;
-  height: 200px;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.card .card-heading,
 .card .card-copy {
+  padding-block: 1.5rem;
   padding-inline: 1.5rem;
 }
 
-.card .card-heading {
-  padding-block-start: 2rem;
-  padding-block-end: 1rem;
+.card a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
-
-.card .card-copy {
-  padding-block: 0.5rem;
+.card .image {
+  order: -1;
+  height: 200px;
+}
+.card img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 @media (prefers-color-scheme: light) {
