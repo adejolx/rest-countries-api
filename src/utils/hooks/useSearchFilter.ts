@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ObjectWithParams } from "../../@types/my-app/custom";
 import filterString from "../filterString";
 import debounce from "../debounce";
@@ -27,13 +27,15 @@ function useSearchFilter<T extends ObjectWithParams>({
     setFilteredData(filtered);
   };
 
-  const debouncedResults = useMemo(
-    () => debounce(runFilterSearch, debounceDelay),
-    []
+  const debouncedResults = useCallback(
+    debounce(runFilterSearch, debounceDelay),
+    [debounceDelay, runFilterSearch]
   );
 
   useEffect(() => {
     debouncedResults(data, params, query);
+
+    return () => {};
   }, [data, params, query]);
 
   return {
