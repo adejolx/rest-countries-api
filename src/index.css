@@ -104,8 +104,12 @@ input::placeholder {
 
 @media (prefers-color-scheme: light) {
   input,
-  button {
+  button,
+  select {
     background-color: var(--input-color);
+  }
+  input,
+  button {
     box-shadow: 0px 0px 5px -2px var(--gray-200);
   }
 

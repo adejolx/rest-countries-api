@@ -66,7 +66,8 @@ const Home = () => {
               aria-label="Search for a country"
             />
             <Filter
-              textChild="filter by region"
+              name="region_filter"
+              aria-label="filter by region"
               categories={filterCategories}
               onChange={handleSelect}
               value={values.selectedValue}

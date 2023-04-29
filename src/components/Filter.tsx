@@ -1,18 +1,17 @@
 import "./Filter.css";
 
 type Props = {
-  textChild: string;
   categories: string[];
-} & React.SelectHTMLAttributes<HTMLSelectElement>;
+  name: string;
+  id?: string;
+} & React.SelectHTMLAttributes<HTMLSelectElement> &
+  React.AriaAttributes;
 
-const Filter = ({ textChild, categories, ...otherProps }: Props) => {
+const Filter = ({ categories, name, id, ...otherProps }: Props) => {
   return (
     <div className="filter-block">
-      {/* <button className="filter-button">
-        {textChild}
-        <i className="fa-solid fa-angle-down filter-icon"></i>
-      </button> */}
-      <select name="" id="" {...otherProps}>
+      <select name={name} id={id && id} {...otherProps}>
+        <option value={""}>Filter By Region</option>
         {categories.map((item, index) => (
           <option key={`${item}-${index}`} value={item}>
             {item}
