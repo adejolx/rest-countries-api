@@ -14,7 +14,7 @@ function useSearchFilter<T extends ObjectWithParams>({
   params,
   query,
   data,
-  debounceDelay = 1000,
+  debounceDelay = 300,
 }: Props<T>) {
   const [filteredData, setFilteredData] = useState(data);
 

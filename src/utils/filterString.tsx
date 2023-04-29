@@ -5,7 +5,7 @@ function filterString<T extends ObjectWithParams>(
   searchParamsArr: Array<keyof T>,
   queryStr: string
 ) {
-  return objArray.filter((item) =>
+  return objArray?.filter((item) =>
     searchParamsArr.some(
       (param) =>
         item[param]!.toString()

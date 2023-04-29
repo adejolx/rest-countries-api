@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Filter from "../components/Filter";
 import Grid from "../components/Grid";
 import NavBar from "../components/NavBar";
@@ -12,18 +12,37 @@ import useFetch from "../utils/hooks/useFetch";
 const Home = () => {
   const localDataSource = "data.json";
   const { data, loading, error } = useFetch<CountryData[]>({ localDataSource });
-  const [searchValue, setSearchValue] = useState("");
-  const { filteredData } = useSearchFilter<CountryData>({
-    params: ["name"],
-    query: searchValue,
+  const filterCategories = useMemo(
+    () => [...new Set(data?.map((item) => item.region))],
+    [data]
+  );
+  const [values, setValues] = useState({
+    searchValue: "",
+    selectedValue: "",
+  });
+
+  const { filteredData: filteredRegions } = useSearchFilter({
+    params: ["region"],
+    query: values.selectedValue,
     data: data!,
-    debounceDelay: 300,
+  });
+
+  const { filteredData: filteredCountries } = useSearchFilter({
+    params: ["name"],
+    query: values.searchValue,
+    data: filteredRegions!,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    if (inputValue.trim().length === 0) setSearchValue("");
-    setSearchValue(inputValue);
+    const searchValue = e.target.value;
+    if (searchValue.trim().length === 0)
+      setValues({ ...values, searchValue: "" });
+    setValues({ ...values, searchValue });
+  };
+
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = e.target.value;
+    setValues({ ...values, searchValue: "", selectedValue });
   };
 
   return (
@@ -43,17 +62,22 @@ const Home = () => {
           <div className="cluster space-between">
             <SearchBar
               onChange={handleChange}
-              value={searchValue}
+              value={values.searchValue}
               aria-label="Search for a country"
             />
-            <Filter textChild="filter by region" />
+            <Filter
+              textChild="filter by region"
+              categories={filterCategories}
+              onChange={handleSelect}
+              value={values.selectedValue}
+            />
           </div>
           {loading ? (
             <p>Loading data...</p>
           ) : error ? (
             <p>{error}</p>
           ) : (
-            <Grid data={filteredData} />
+            <Grid data={filteredCountries} />
           )}
         </Wrapper>
       </main>
