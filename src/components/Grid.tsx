@@ -9,8 +9,8 @@ const Grid = ({ data }: Props<CountryData>) => {
   return (
     <>
       <div className="grid">
-        {data && data!.length > 0 ? (
-          data?.map((datum) => {
+        {data && data.length > 0 ? (
+          data.map((datum) => {
             return (
               <Card
                 key={datum.name}
@@ -34,7 +34,7 @@ const Grid = ({ data }: Props<CountryData>) => {
             );
           })
         ) : (
-          <p>Result Not Found</p>
+          <p>No Result(s)</p>
         )}
       </div>
     </>

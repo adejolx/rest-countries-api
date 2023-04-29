@@ -19,7 +19,6 @@ function useFetch<T>({ url, localDataSource }: ValidUrl) {
           if (mounted) {
             setData(result);
             setLoading(false);
-            console.log(result);
           }
         })
         .catch((error: { message: string }) => {

@@ -23,20 +23,14 @@ function useSearchFilter<T extends ObjectWithParams>({
     paramsArr: string[],
     queryStr: string
   ): void => {
-    const filtered = filterString(objArr, paramsArr, queryStr);
-    setFilteredData(filtered);
+    setFilteredData(filterString(objArr, paramsArr, queryStr));
   };
 
-  const debouncedResults = useCallback(
-    debounce(runFilterSearch, debounceDelay),
-    [debounceDelay, runFilterSearch]
-  );
+  const debouncedResults = debounce(runFilterSearch, debounceDelay);
 
   useEffect(() => {
     debouncedResults(data, params, query);
-
-    return () => {};
-  }, [data, params, query]);
+  }, [data, query]);
 
   return {
     filteredData,

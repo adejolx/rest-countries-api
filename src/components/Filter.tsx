@@ -14,7 +14,9 @@ const Filter = ({ textChild, categories, ...otherProps }: Props) => {
       </button> */}
       <select name="" id="" {...otherProps}>
         {categories.map((item, index) => (
-          <option key={`${item}-${index}`}>{item}</option>
+          <option key={`${item}-${index}`} value={item}>
+            {item}
+          </option>
         ))}
       </select>
     </div>
