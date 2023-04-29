@@ -9,7 +9,7 @@ const Grid = ({ data }: Props<CountryData>) => {
   return (
     <>
       <div className="grid">
-        {data!.length > 0 ? (
+        {data && data!.length > 0 ? (
           data?.map((datum) => {
             return (
               <Card
