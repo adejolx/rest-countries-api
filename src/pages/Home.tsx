@@ -9,10 +9,12 @@ import { CountryData } from "../@types/my-app/custom";
 import useSearchFilter from "../utils/hooks/useSearchFilter";
 import useFetch from "../utils/hooks/useFetch";
 
-const Home = () => {
+const Home = ({ initialTheme = "dark" }) => {
   const localDataSource = "data.json";
   const { data, loading, error } = useFetch<CountryData[]>({ localDataSource });
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || initialTheme
+  );
   const filterCategories = useMemo(
     () => [...new Set(data?.map((item) => item.region))],
     [data]
@@ -49,12 +51,18 @@ const Home = () => {
 
   const handleThemeToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setTheme((prev) => !prev);
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.querySelector("body")?.setAttribute("data-theme", newTheme);
   };
 
   useEffect(() => {
-    const colorScheme = theme ? "light" : "dark";
-    document.querySelector("body")?.setAttribute("data-theme", colorScheme);
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.querySelector("body")?.setAttribute("data-theme", savedTheme);
+    }
   }, [theme]);
 
   return (
