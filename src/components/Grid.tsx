@@ -18,6 +18,7 @@ const Grid = ({ data }: Props<CountryData>) => {
                 heading={datum.name}
                 image={datum.flags.svg}
                 alt={`flag of ${datum.name}`}
+                link={datum.name}
               >
                 <p>
                   <strong>Population: </strong>
