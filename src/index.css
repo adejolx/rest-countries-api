@@ -103,7 +103,8 @@ header {
 }
 
 input,
-button {
+button,
+.button {
   --p-block: 1rem;
   --p-inline: 1rem;
   padding-block: var(--p-block);
@@ -118,7 +119,8 @@ button {
 }
 
 input:focus,
-button:focus {
+button:focus,
+.button:focus {
   border: 2px solid var(--focus-outline);
   box-shadow: none;
 }
@@ -153,6 +155,10 @@ input::placeholder {
 
 .space-between {
   justify-content: space-between;
+}
+
+.flex-start-x {
+  justify-content: flex-start;
 }
 
 .text\:lg {

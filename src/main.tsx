@@ -4,21 +4,30 @@ import "./index.css";
 import { RouterProvider, createHashRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import CountryDetails from "./pages/Details";
+import NavBar from "./pages/NavBar";
 
 const dataLoader = async () => {
   const loadedData = await fetch("data.json");
   return loadedData.json();
 };
+
 const router = createHashRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <NavBar />,
     loader: dataLoader,
-  },
-  {
-    path: "countries/:countryIndex",
-    element: <CountryDetails />,
-    loader: dataLoader,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+        loader: dataLoader,
+      },
+      {
+        path: "countries/:countryIndex",
+        element: <CountryDetails />,
+        loader: dataLoader,
+      },
+    ],
   },
 ]);
 

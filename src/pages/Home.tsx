@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Filter from "../components/Filter";
 import Grid from "../components/Grid";
-import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Toggle from "../components/Toggle";
 import Wrapper from "../components/Wrapper";
@@ -13,9 +12,6 @@ const Home = ({ initialTheme = "dark" }) => {
   const data = useLoaderData() as CountryData[];
   const navigation = useNavigation();
 
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || initialTheme
-  );
   const filterCategories = useMemo(
     () => [...new Set(data?.map((item) => item.region))],
     [data]
@@ -50,53 +46,30 @@ const Home = ({ initialTheme = "dark" }) => {
     setValues({ ...values, searchValue: "", selectedValue });
   };
 
-  const handleThemeToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
-  useEffect(() => {
-    const bodyEl = document.querySelector("body");
-    bodyEl && bodyEl.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   return (
-    <div>
-      <header>
-        <NavBar>
-          <Wrapper className={"cluster space-between"}>
-            <a href="#" className="text:lg bold">
-              Where in the world?
-            </a>
-            <Toggle onClick={handleThemeToggle} />
-          </Wrapper>
-        </NavBar>
-      </header>
-      <main>
-        <Wrapper className="stack-lg">
-          <div className="cluster space-between">
-            <SearchBar
-              onChange={handleChange}
-              value={values.searchValue}
-              aria-label="Search for a country"
-            />
-            <Filter
-              name="region_filter"
-              aria-label="filter by region"
-              categories={filterCategories}
-              onChange={handleSelect}
-              value={values.selectedValue}
-            />
-          </div>
-          {navigation.state === "loading" ? (
-            <p>Data is Loading...</p>
-          ) : (
-            <Grid data={filteredCountries} />
-          )}
-        </Wrapper>
-      </main>
-    </div>
+    <>
+      <Wrapper className="stack-lg">
+        <div className="cluster space-between">
+          <SearchBar
+            onChange={handleChange}
+            value={values.searchValue}
+            aria-label="Search for a country"
+          />
+          <Filter
+            name="region_filter"
+            aria-label="filter by region"
+            categories={filterCategories}
+            onChange={handleSelect}
+            value={values.selectedValue}
+          />
+        </div>
+        {navigation.state === "loading" ? (
+          <p>Data is Loading...</p>
+        ) : (
+          <Grid data={filteredCountries} />
+        )}
+      </Wrapper>
+    </>
   );
 };
 export default Home;

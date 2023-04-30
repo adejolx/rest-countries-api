@@ -1,0 +1,10 @@
+.button--link {
+  --p-inline: 2rem;
+  --p-block: 0.5rem;
+  --gap: 1rem;
+  padding-inline: var(--p-inline);
+  padding-block: var(--p-block);
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
