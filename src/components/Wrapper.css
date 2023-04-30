@@ -1,5 +1,5 @@
 .wrapper {
-  --p-inline: 4rem;
+  --p-inline: 1rem;
   --p-block: 2rem;
   max-width: var(--max-width);
   margin-inline-start: auto;
