@@ -142,7 +142,7 @@ input::placeholder {
 }
 
 .cluster {
-  --gap: 2em;
+  --gap: 1em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -155,7 +155,13 @@ input::placeholder {
 }
 
 .text\:lg {
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 500px) {
+  .text\:lg {
+    font-size: 1.25rem;
+  }
 }
 
 .bold {

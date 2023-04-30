@@ -7,10 +7,6 @@
   font-weight: var(--bold-200);
 }
 
-.theme-toggle span {
-  font-size: 1.2rem;
-}
-
 .theme-toggle i {
   transform: rotateZ(-30deg);
 }

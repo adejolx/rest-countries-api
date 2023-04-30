@@ -7,7 +7,7 @@ const Toggle = ({
     <>
       <button type="button" className="theme-toggle" {...otherProps}>
         <i className="fa-solid fa-lg fa-moon"></i>
-        <span>Dark Mode</span>
+        <span className="text:lg">Dark Mode</span>
       </button>
     </>
   );
