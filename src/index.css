@@ -78,6 +78,7 @@ body {
   font-family: var(--font-family-primary);
   background-color: var(--background-color);
   color: var(--text-color);
+  font-weight: var(--bold-100);
 }
 
 img {
@@ -153,6 +154,18 @@ input::placeholder {
   gap: var(--gap);
 }
 
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  --threshold: 30rem;
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--threshold) - 100%) * 999);
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -169,8 +182,4 @@ input::placeholder {
   .text\:lg {
     font-size: 1.25rem;
   }
-}
-
-.bold {
-  font-weight: var(--bold-300);
 }

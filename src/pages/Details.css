@@ -8,3 +8,15 @@
   align-items: center;
   gap: var(--gap);
 }
+
+.country-info {
+  padding-block: 2rem;
+}
+
+.country-info .title {
+  font-size: 1.5rem;
+}
+
+.country-info span:not(.unbold) {
+  font-weight: var(--bold-200);
+}
