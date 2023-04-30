@@ -5,13 +5,14 @@ import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Toggle from "../components/Toggle";
 import Wrapper from "../components/Wrapper";
-import { CountryData } from "../@types/my-app/custom";
 import useSearchFilter from "../utils/hooks/useSearchFilter";
-import useFetch from "../utils/hooks/useFetch";
+import { useLoaderData, useNavigation } from "react-router-dom";
+import { CountryData } from "../@types/my-app/custom";
 
 const Home = ({ initialTheme = "dark" }) => {
-  const localDataSource = "data.json";
-  const { data, loading, error } = useFetch<CountryData[]>({ localDataSource });
+  const data = useLoaderData() as CountryData[];
+  const navigation = useNavigation();
+
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || initialTheme
   );
@@ -88,10 +89,8 @@ const Home = ({ initialTheme = "dark" }) => {
               value={values.selectedValue}
             />
           </div>
-          {loading ? (
-            <p>Loading data...</p>
-          ) : error ? (
-            <p>{error}</p>
+          {navigation.state === "loading" ? (
+            <p>Data is Loading...</p>
           ) : (
             <Grid data={filteredCountries} />
           )}

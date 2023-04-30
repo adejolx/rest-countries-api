@@ -11,14 +11,14 @@ const Grid = ({ data }: Props<CountryData>) => {
     <>
       <ul className="grid">
         {data && data.length > 0 ? (
-          data.map((datum) => {
+          data.map((datum, index) => {
             return (
               <Card
+                index={index}
                 key={datum.name}
                 heading={datum.name}
                 image={datum.flags.svg}
                 alt={`flag of ${datum.name}`}
-                link={datum.name}
               >
                 <p>
                   <strong>Population: </strong>
