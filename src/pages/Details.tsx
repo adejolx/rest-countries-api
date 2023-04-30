@@ -70,18 +70,19 @@ const CountryDetails = () => {
               <div className="cluster flex-start-x">
                 <span>Border Countries:</span>
                 <div className="cluster flex-start-x">
-                  {data[index]?.borders?.map((border) => (
-                    <Link
-                      to={`../../countries/${findIndex(
-                        data,
-                        "alpha3Code",
-                        border
-                      )}`}
-                      className="button button--link"
-                    >
-                      {border}
-                    </Link>
-                  ))}
+                  {data[index]?.borders?.map((border) => {
+                    const newIndex = findIndex(data, "alpha3Code", border);
+                    return (
+                      <Link
+                        to={`../../countries/${newIndex}`}
+                        className="button button--link"
+                      >
+                        {typeof newIndex === "number"
+                          ? data[newIndex].name
+                          : newIndex}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </article>
