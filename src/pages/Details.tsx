@@ -3,6 +3,7 @@ import Wrapper from "../components/Wrapper";
 import { CountryData } from "../@types/my-app/custom";
 import findIndex from "../utils/findIndex";
 import "./Details.css";
+import formatNumber from "../utils/formatNumber";
 
 const CountryDetails = () => {
   const data = useLoaderData() as CountryData[];
@@ -31,7 +32,8 @@ const CountryDetails = () => {
                     <span>Native Name:</span> {data[index]?.nativeName}
                   </li>
                   <li>
-                    <span>Population:</span> {data[index]?.population}
+                    <span>Population:</span>{" "}
+                    {formatNumber(data[index]?.population)}
                   </li>
                   <li>
                     <span>Region:</span> {data[index]?.region}
