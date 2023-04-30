@@ -51,18 +51,13 @@ const Home = ({ initialTheme = "dark" }) => {
 
   const handleThemeToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.querySelector("body")?.setAttribute("data-theme", newTheme);
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.querySelector("body")?.setAttribute("data-theme", savedTheme);
-    }
+    const bodyEl = document.querySelector("body");
+    bodyEl && bodyEl.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
