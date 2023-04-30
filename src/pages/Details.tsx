@@ -50,7 +50,9 @@ const CountryDetails = () => {
                   <li>
                     <span>Currencies:</span>{" "}
                     {data[index]?.currencies?.map((curr) => (
-                      <span key={curr?.name}>{curr?.name}, </span>
+                      <span key={curr?.name} className="unbold">
+                        {curr?.name},{" "}
+                      </span>
                     ))}
                   </li>
                   <li>
