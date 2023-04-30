@@ -1,6 +1,7 @@
 import { CountryData } from "../@types/my-app/custom";
 import "./Grid.css";
 import Card from "./Card";
+import formatNumber from "../utils/formatNumber";
 
 type Props<T extends Record<string, unknown>> = {
   data: T[] | null;
@@ -20,7 +21,7 @@ const Grid = ({ data }: Props<CountryData>) => {
               >
                 <p>
                   <strong>Population: </strong>
-                  {datum.population}
+                  {formatNumber(datum.population)}
                 </p>
                 <p>
                   <strong>Region: </strong>
