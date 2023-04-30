@@ -1,8 +1,6 @@
 .filter-block {
-  position: relative;
-  --p-block: 0.5rem;
   --p-inline: 0.5rem;
-  padding-block: var(--p-block);
+  position: relative;
   padding-inline: var(--p-inline);
   background-color: var(--dark-mode-elements);
   border: 2px solid transparent;
@@ -13,7 +11,10 @@
 }
 
 .filter-block select {
-  padding-inline: 0.5rem;
+  --p-block: 1rem;
+  --p-inline: 0.5rem;
+  padding-inline: var(--p-inline);
+  padding-block: var(--p-block);
   outline: none;
   border: none;
   background-color: var(--dark-mode-elements);

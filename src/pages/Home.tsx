@@ -25,6 +25,7 @@ const Home = () => {
     params: ["region"],
     query: values.selectedValue,
     data: data!,
+    debounceDelay: 0,
   });
 
   const { filteredData: filteredCountries } = useSearchFilter({
