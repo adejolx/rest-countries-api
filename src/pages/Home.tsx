@@ -30,7 +30,7 @@ const Home = () => {
 
   const { filteredData: filteredCountries } = useSearchFilter({
     params: ["name"],
-    query: values.searchValue,
+    query: values.searchValue.trim(),
     data: filteredRegions!,
   });
 
