@@ -8,7 +8,7 @@ type Props = {
 };
 const Card = ({ heading, image, alt, children }: Props) => {
   return (
-    <li className="card card--clickable">
+    <li className="card">
       <div className="card-copy stack-sm">
         <h2 className="card-heading">
           <a>{heading}</a>

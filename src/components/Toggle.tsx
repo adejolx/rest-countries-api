@@ -1,10 +1,12 @@
-const Toggle = () => {
+import "./Toggle.css";
+
+const Toggle = ({
+  ...otherProps
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <>
-      <button>
-        <span>
-          <img src="" alt="" />
-        </span>
+      <button type="button" className="theme-toggle" {...otherProps}>
+        <i className="fa-solid fa-lg fa-moon"></i>
         <span>Dark Mode</span>
       </button>
     </>

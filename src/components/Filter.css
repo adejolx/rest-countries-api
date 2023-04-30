@@ -2,22 +2,25 @@
   --p-inline: 0.5rem;
   position: relative;
   padding-inline: var(--p-inline);
-  background-color: var(--dark-mode-elements);
+  background-color: var(--control-bg-color);
   border: 2px solid transparent;
   border-radius: 0.25rem;
-  box-shadow: 0px 0px 25px -2px var(--blue-200);
+  box-shadow: 0px 0px 5px -2px var(--shadow-color);
   outline: 1px solid transparent;
   transition: border 150ms ease-in;
+  width: 12rem;
 }
 
 .filter-block select {
   --p-block: 1rem;
   --p-inline: 0.5rem;
+  width: 100%;
   padding-inline: var(--p-inline);
   padding-block: var(--p-block);
   outline: none;
   border: none;
-  background-color: var(--dark-mode-elements);
+  background-color: var(--control-bg-color);
+  color: var(--text-color);
 }
 
 .filter-block select::after {
@@ -27,17 +30,13 @@
 }
 
 .filter-block:focus-within {
-  border: 2px solid var(--blue-100);
+  border: 2px solid var(--focus-outline);
   box-shadow: none;
 }
 
 @media (prefers-color-scheme: light) {
   .filter-block,
   .filter-block select {
-    background-color: var(--input-color);
-  }
-
-  .filter-block {
-    box-shadow: 0px 0px 5px -2px var(--gray-200);
+    background-color: var(--control-bg-color);
   }
 }

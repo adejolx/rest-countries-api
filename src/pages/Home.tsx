@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Filter from "../components/Filter";
 import Grid from "../components/Grid";
 import NavBar from "../components/NavBar";
@@ -12,6 +12,7 @@ import useFetch from "../utils/hooks/useFetch";
 const Home = () => {
   const localDataSource = "data.json";
   const { data, loading, error } = useFetch<CountryData[]>({ localDataSource });
+  const [theme, setTheme] = useState(false);
   const filterCategories = useMemo(
     () => [...new Set(data?.map((item) => item.region))],
     [data]
@@ -46,6 +47,16 @@ const Home = () => {
     setValues({ ...values, searchValue: "", selectedValue });
   };
 
+  const handleThemeToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setTheme((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const colorScheme = theme ? "light" : "dark";
+    document.querySelector("body")?.setAttribute("data-theme", colorScheme);
+  }, [theme]);
+
   return (
     <div>
       <header>
@@ -54,7 +65,7 @@ const Home = () => {
             <a href="#" className="text:lg bold">
               Where in the world?
             </a>
-            <Toggle />
+            <Toggle onClick={handleThemeToggle} />
           </Wrapper>
         </NavBar>
       </header>

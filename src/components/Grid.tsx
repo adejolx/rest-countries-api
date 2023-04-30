@@ -8,7 +8,7 @@ type Props<T extends Record<string, unknown>> = {
 const Grid = ({ data }: Props<CountryData>) => {
   return (
     <>
-      <div className="grid">
+      <ul className="grid">
         {data && data.length > 0 ? (
           data.map((datum) => {
             return (
@@ -34,9 +34,9 @@ const Grid = ({ data }: Props<CountryData>) => {
             );
           })
         ) : (
-          <p>No Result(s)</p>
+          <li>No Result(s)</li>
         )}
-      </div>
+      </ul>
     </>
   );
 };
