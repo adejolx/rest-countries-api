@@ -75,12 +75,13 @@
 /* Defaults
 -------------- */
 body {
-  font-family: var(--font-family-primary);
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-weight: var(--bold-100);
   min-height: 100vh;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-home);
   line-height: 1.5;
+  font-weight: var(--bold-100);
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 img {

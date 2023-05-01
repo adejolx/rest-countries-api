@@ -13,7 +13,7 @@ const CountryDetails = () => {
   return (
     data && (
       <Wrapper>
-        <section className="stack-sm">
+        <section className="stack-sm container--details">
           <h2 className="sr-only">Country details</h2>
           <Wrapper className="cluster flex-start-x">
             <Link to="/" className="button button--link">

@@ -1,3 +1,7 @@
+.container--details {
+  font-size: var(--font-size-detail);
+}
+
 .button--link {
   --p-inline: 2rem;
   --p-block: 0.5rem;
