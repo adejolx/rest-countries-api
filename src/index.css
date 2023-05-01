@@ -79,6 +79,8 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-weight: var(--bold-100);
+  min-height: 100vh;
+  line-height: 1.5;
 }
 
 img {
