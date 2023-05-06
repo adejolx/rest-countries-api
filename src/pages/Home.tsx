@@ -49,6 +49,7 @@ const Home = ({ initialTheme = "dark" }) => {
   return (
     <>
       <Wrapper className="stack-lg">
+        <h1 className="sr-only">Where in the world?</h1>
         <div className="cluster space-between">
           <SearchBar
             onChange={handleChange}
