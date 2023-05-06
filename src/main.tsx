@@ -23,7 +23,7 @@ const router = createHashRouter([
         loader: dataLoader,
       },
       {
-        path: "countries/:countryIndex",
+        path: "countries/:countryId",
         element: <CountryDetails />,
         loader: dataLoader,
       },

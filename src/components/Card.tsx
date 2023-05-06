@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 import "./Card.css";
 
 type Props = {
-  index: number;
+  id: string;
   heading: string;
   image: string;
   alt?: string;
   children: React.ReactNode;
 };
-const Card = ({ index, heading, image, alt, children }: Props) => {
+const Card = ({ id, heading, image, alt, children }: Props) => {
   return (
     <li className="card">
       <div className="card-copy stack-sm">
         <h2 className="card-heading">
-          <Link to={`countries/${index}`}>{heading}</Link>
+          <Link to={`countries/${id}`}>{heading}</Link>
         </h2>
         {children}
       </div>

@@ -11,10 +11,10 @@ const Grid = ({ data }: Props<CountryData>) => {
     <>
       <ul className="grid">
         {data && data.length > 0 ? (
-          data.map((datum, index) => {
+          data.map((datum) => {
             return (
               <Card
-                index={index}
+                id={datum.name}
                 key={datum.name}
                 heading={datum.name}
                 image={datum.flags.svg}
