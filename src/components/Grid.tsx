@@ -14,7 +14,7 @@ const Grid = ({ data }: Props<CountryData>) => {
           data.map((datum) => {
             return (
               <Card
-                id={datum.name}
+                id={datum.alpha2Code}
                 key={datum.name}
                 heading={datum.name}
                 image={datum.flags.svg}

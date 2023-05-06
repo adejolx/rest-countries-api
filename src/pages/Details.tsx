@@ -8,7 +8,7 @@ import formatNumber from "../utils/formatNumber";
 const CountryDetails = () => {
   const data = useLoaderData() as CountryData[];
   const { countryId } = useParams();
-  const index = findIndex(data, "name", countryId) as number;
+  const index = findIndex(data, "alpha2Code", countryId) as number;
 
   return (
     data && (
@@ -74,7 +74,9 @@ const CountryDetails = () => {
                     const newIndex = findIndex(data, "alpha3Code", border);
                     return (
                       <Link
-                        to={`../../countries/${data[newIndex as number].name}`}
+                        to={`../../countries/${
+                          data[newIndex as number].alpha2Code
+                        }`}
                         className="button button--link"
                         key={newIndex}
                       >
